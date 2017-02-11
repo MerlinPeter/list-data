@@ -1,3 +1,43 @@
-<h1>
-  {{title}}
-</h1>
+ 
+<h1 class="text-center">{{title}}</h1>
+ 
+  
+<h2> Grozery List </h2>
+ 
+    
+ <router-outlet></router-outlet>
+
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Category</th>
+        <th>Phone</th>
+        <th><a routerLink="/listnew">Add New Item</a></th>
+      </tr>
+    </thead>
+    <tbody>
+ 
+      <tr *ngFor="let list of listitems">
+        <td>{{list.$key}}</td>
+        <td>{{list.category}}</td>
+        <td>{{list.phone}}</td>
+        <td>
+             <a [routerLink]="['listnew', {id:list.$key}]">
+
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+           <i (click)="deleteItem(list.$key)" class="glyphicon glyphicon-remove"></i>
+
+   
+    
+        </td>
+      </tr>
+
+    </tbody>
+ 
+  </table>
+
+
+ 
+ 
