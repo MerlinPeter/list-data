@@ -3,6 +3,7 @@ import { myList }    from './list';
 
 import { FirebaseService } from './services/firebase.service';
 
+import {ActivatedRoute, Router, CanDeactivate } from '@angular/router'
 
 @Component({
  
@@ -11,30 +12,33 @@ import { FirebaseService } from './services/firebase.service';
 })
 export class ListFormComponent {
 
-   constructor(private _firebaseService: FirebaseService) {
+   constructor(private _firebaseService: FirebaseService,
+     private router: Router) {
 
   }
 
 
-  Category = ['Really Smart', 'Super Flexible',
-            'Super Hot', 'Weather Changer'];
+  Category = ['Indian', 'Costco',
+            'Whole Foods', 'Traders Joe'];
   model = new myList('18', 'orcl',this.Category[0], 'Chuck Overstreet');
 
   submitted = false;
+
   onSubmit() {
-   this.submitted = true;
 
+      this.submitted = true;
+     console.log(this.model.completed)
+      
       this._firebaseService.writeData(this.model);
-
+      this.router.navigate(["entirelist"]);
    }
- // newList() {
- //   this.model = new myList('18', 'orcl','jj', 'Chuck Overstreet');
- // }
+
+     routerCanDeactivate(next, previous) {
+        debugger;
+        return confirm("Are u sure?");
+    }
+
+
 }
 
-/*
-     key?: string,
-     company?: string,
-     category?: string,
-     phone?: string
-     */
+ 

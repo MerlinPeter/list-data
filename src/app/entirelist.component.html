@@ -1,0 +1,45 @@
+
+    
+  
+
+   <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Category</th>
+        <th>Completed</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+ 
+      <tr *ngFor="let list of listitems">
+        <td>{{list.item_name}}</td>
+        <td>{{list.category}}</td>
+        <!--td>{{list.completed}}</td-->
+        <td>   
+         <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0"> 
+            <input  class="custom-control-input" type="checkbox"
+                [checked]="list.completed === toggles[0].value" 
+                (change)="$event.target.checked? (list.completed =  toggles[0].value) : (list.completed= toggles[1].value)">
+              </label>
+         </td>
+        <td>
+             <a [routerLink]="['listnew', {id:list.$key}]">
+
+                    <i class="glyphicon glyphicon-edit"></i>
+                </a>
+           <i (click)="deleteItem(list.$key)" class="glyphicon glyphicon-remove"></i>
+
+   
+    
+        </td>
+      </tr>
+
+    </tbody>
+ 
+  </table>
+
+
+ 
+ 

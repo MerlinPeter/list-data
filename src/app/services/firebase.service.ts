@@ -17,7 +17,7 @@ export class FirebaseService{
     }
 
    writeData(myList) {
-   console.log(myList)
+
     const items = this._af.database.list('list');
     items.push(myList);
    
@@ -26,9 +26,9 @@ export class FirebaseService{
   editData(myList) {
 
       this._af.database.object('list/' + myList.id).set({
-      company: myList.company,
+      item_name: myList.item_name,
          category: myList.category,
-         phone : myList.phone
+         completed : myList.completed
 
       }); 
    }

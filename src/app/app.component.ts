@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import { myList } from './list';
-
 import { FirebaseService } from './services/firebase.service';
 
+ 
 
-import { AngularFire, FirebaseListObservable } from 'angularfire2' ;
-@Component({
+ @Component({
   selector: 'app-root',
-  providers: [FirebaseService] ,
-  templateUrl: './app.component.html'
- // template: '<list-form></list-form>'
+ templateUrl: './app.html',
+ providers: [FirebaseService] 
  
 })
 export class AppComponent  {
@@ -25,29 +22,15 @@ export class AppComponent  {
  
 
 
-  constructor(private _firebaseService: FirebaseService) {
+  constructor(private _firebaseService: FirebaseService ) {
 
   }
-  ngOnInit() {
-   //  this._firebaseService.writeUserData(this.listentry);
-
-    this._firebaseService.getList().subscribe(listitems => {
-      this.listitems = listitems;
-       console.log(listitems);
-    });
-     
-
-
    
+  ngOnInit() {
+    
   }
 
-  deleteItem(id: String) {
-
-    console.log(id)
-    this._firebaseService.deleteData(id);
-     
-
-  }
+  
 }
  
  

@@ -1,14 +1,14 @@
  
 export class myList {
     key?: string;
-    company?: string;
+    item_name?: string;
     category?: string;
-    phone?: string;
+    completed?: string;
     constructor(
      key?: string,
-     company?: string,
+     item_name?: string,
      category?: string,
-     phone?: string
+     completed?: string
   ) { 
    }
 }
